@@ -1,15 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; //importing SceneManagement library
+
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = .01f;
+    public bool haskey = false;
+
+    public GameObject key; 
+
+    public static PlayerController instance; //creating an object of the class to be findable 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (instance != null) //check if instance is in this scene
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        GameObject.DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -44,5 +57,27 @@ public class PlayerController : MonoBehaviour
 
         //update the current position to the new position
         transform.position = newPosition;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("door"))
+        {
+            Debug.Log("hit");
+            SceneManager.LoadScene(1); //access SceneManager class for LoadScene function
+        }
+         
+        if (collision.gameObject.tag.Equals("key")) 
+        {
+            Debug.Log("obtained key");
+            key.SetActive(false);//key disappears
+            haskey = true;//the key now 
+
+        }
+            //write code for exiting second scene and go back to first scene
+            if (collision.gameObject.tag.Equals("exit"))
+            {
+                Debug.Log("hit");
+                SceneManager.LoadScene(0);
+            }
     }
 }

@@ -79,5 +79,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("hit");
                 SceneManager.LoadScene(0);
             }
+        //write code for exiting second scene and go back to first scene
+        if (collision.gameObject.tag.Equals("E.N.D") && haskey == true) //needs to satisfy both conditions to enter the end door  
+        {
+            Debug.Log("hit");
+            SceneManager.LoadScene(2); 
+        }
     }
 }

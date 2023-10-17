@@ -20,7 +20,7 @@ public class Key : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             Debug.Log("hit");
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); //destroy key object
         }
     }
 }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/luna v2.unity
     guid: 3eb8510f7443cdb4c8575f25fe33973c
+  - enabled: 1
+    path: Assets/Scenes/E.N.D.unity
+    guid: 58e7e2c8e79868547b71b08623233b55
   m_configObjects: {}
